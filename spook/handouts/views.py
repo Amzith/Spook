@@ -3,4 +3,10 @@ from django.http import HttpResponse
 
 # Create your views here.
 def formpage(request):
-    return HttpResponse("This is where a form page will show")
+
+    context = {
+        'title': 'Handouts',
+        'date': 1920
+    }
+
+    return render(request, 'home.html', context=context)

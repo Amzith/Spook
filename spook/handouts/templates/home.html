@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Spook</h1>
+  <p>
+    Welcome to Spook, a website developed by the
+    <em>Feral Slinky Team</em>!
+  </p>
+  {% load static %}
+  <img
+  src="{% static 'images/woods.jpg' %}"
+  alt="Background Image" 
+  style="width:555px;height:540px;"/>
+
+  <h2>Contents</h2>
+  <p>The library has the following:</p>
+  <ul>
+    <li><strong>Text:</strong> {{ title }}</li>
+    <li><strong>Date:</strong> {{ date }}</li>
+  </ul>
+
+
+
+{% endblock %}
+
