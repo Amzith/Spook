@@ -5,6 +5,8 @@ from .forms import HandoutForm
 
 import os
 
+from django.conf import settings
+
 # Importing the PIL library
 from PIL import ImageFont, Image, ImageDraw
 from matplotlib import font_manager
@@ -40,7 +42,8 @@ def imagedraw(output_text, name_text):
     font = font_manager.FontProperties(family='Georgia', weight='bold')
     file = font_manager.findfont(font)
 
-    my_img = os.path.abspath("handouts\static\images\paper.jpg")
+    img_path = settings.BASE_DIR / 'handouts' / 'static' / 'images'
+    my_img = img_path / 'paper.jpg'
 
     # Open an Image
     img = Image.open(my_img)
@@ -80,7 +83,7 @@ def imagedraw(output_text, name_text):
     # Display edited image
     img.show()
 
-    output_img = os.path.abspath("handouts\static\images\output.jpg")
-    
+    output_img = img_path / 'output.jpg'
+
     # Save the edited image
     img.save(output_img)
