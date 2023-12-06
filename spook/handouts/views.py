@@ -39,7 +39,10 @@ def formpage(request):
 # Draw Handout image
 def imagedraw(output_text, name_text):
 
-    font = font_manager.FontProperties(family='Georgia', weight='bold')
+    # Adding custom font
+    font_path = settings.BASE_DIR / 'handouts' / 'static' / 'fonts' / 'Tangerine-Regular.ttf'
+    font_manager.fontManager.addfont(font_path)
+    font = font_manager.FontProperties(fname=font_path)
     file = font_manager.findfont(font)
 
     img_path = settings.BASE_DIR / 'handouts' / 'static' / 'images'
