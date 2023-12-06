@@ -24,9 +24,15 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
-        name: Build and push
+        name: Build and push ARM64
         uses: docker/build-push-action@v5
         with:
           platforms: linux/arm64
           push: true
           tags: amzith/spook:arm64
+      -
+        name: Build and push latest
+        uses: docker/build-push-action@v5
+        with:
+          push: true
+          tags: amzith/spook:latest
