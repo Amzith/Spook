@@ -12,19 +12,11 @@
   alt="Background Image" 
   style="width:555px;height:540px;"/>
 
-  <h2>Contents</h2>
-  <p>The library has the following:</p>
-  <ul>
-    <li><strong>Text:</strong> {{ title }}</li>
-    <li><strong>Date:</strong> {{ date }}</li>
-  </ul>
-
-  <form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit">
-  </form>
-
+  <h2>Handout Contents</h2>
+  <p> {{ output_text }}</p>
 
 {% endblock %}
+
+
+
 
