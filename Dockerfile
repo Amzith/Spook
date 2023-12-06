@@ -8,9 +8,6 @@ FROM python:3.12
 COPY spook/requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Install matplotlib
-RUN pip install 'matplotlib==3.8.2'
-
 # Mounts the application code to the image
 COPY . code
 WORKDIR /code
