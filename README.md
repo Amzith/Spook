@@ -1,12 +1,16 @@
 # Spook
 Spook is a project involved in creating tools for TTRPGs
 
+## Handout Generation
+The first tool is to create 'Handouts' which involve taking textual input and overlaying text to images, and producing the new image back. 
+Just submit text into the form in the homepage, and an image will be generated.
+
 ### running locally
 requires python 3.12 or later installed,
 
 the first time run the following command to install the required python modules
 
-`pip install --no-cache-dir -r spook/sppok/requirements.txt`
+`pip install --no-cache-dir -r spook/spook/requirements.txt`
 
 then to run the django webapp run
 
