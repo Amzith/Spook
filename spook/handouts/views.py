@@ -6,21 +6,21 @@ from .forms import HandoutForm
 import os
 
 # Importing the PIL library
-from PIL import Image
-from PIL import ImageDraw
-from PIL import ImageFont
- 
+from PIL import ImageFont, Image, ImageDraw
+from matplotlib import font_manager
 
 # Create your views here.
 def formpage(request):
-
     # Handle Form 
     if request.method == "POST":
         form = HandoutForm(request.POST)
 
         if form.is_valid():
             output_text = form.cleaned_data["contents_text"]
-            imagedraw(output_text)
+            name_text = form.cleaned_data["full_name"]
+
+            imagedraw(output_text, name_text)
+
             return render(request, 'output.html', {"output_text":output_text})
     
     else:
@@ -35,20 +35,47 @@ def formpage(request):
     return render(request, 'home.html', context=context)
 
 # Draw Handout image
-def imagedraw(output_text):
+def imagedraw(output_text, name_text):
+
+    font = font_manager.FontProperties(family='Georgia', weight='bold')
+    file = font_manager.findfont(font)
 
     my_img = os.path.abspath("handouts\static\images\paper.jpg")
+
     # Open an Image
     img = Image.open(my_img)
+
+    # Resize Image, and text wrap each line
+    img = img.resize((1080,1080))
+    width, height = img.size
+
+    title_font = ImageFont.truetype(file, 50)
+
+    all_words = output_text.split(' ')
+    all_lines = []
+    line = []
+    while all_words:
+        word = all_words[0]
+        new_text = ' '.join(line + [word])
+        if title_font.getlength(new_text) > (width-30):
+            all_lines.append(' '.join(line))
+            line = []
+        else:
+            line += [word]
+            all_words = all_words[1:]
+        
+    if line:
+        all_lines.append(' '.join(line))  
+
     
     # Call draw Method to add 2D graphics in an image
     I1 = ImageDraw.Draw(img)
-    
-    # Custom font style and font size
-    myFont = ImageFont.truetype("arial.ttf", 90)
-    
-    # Add Text to an image
-    I1.text((250, 300), output_text, fill =(0, 0, 0))
+    I1.text((20, 100), name_text, (0, 0, 0), font=title_font)
+
+    y = 250
+    for text in all_lines:
+        I1.text((20, y), text, (0, 0, 0), align='center', font=title_font)
+        y += 100
     
     # Display edited image
     img.show()
