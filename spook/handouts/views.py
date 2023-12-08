@@ -37,6 +37,7 @@ def formpage(request):
     return render(request, 'home.html', context=context)
 
 # Draw Handout image
+#TODO: move this method into the Image Draw Service (it's not a view)
 def imagedraw(output_text, name_text):
 
     # Adding custom font
