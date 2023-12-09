@@ -10,4 +10,4 @@ class Handout:
         self.texts.append(text)
 
     def addImage(self, image):
-        self.images.append(image)
+        self.images.append(image) 

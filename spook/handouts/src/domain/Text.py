@@ -5,4 +5,4 @@ class Text:
         self.position = position
         self.textContent = textContent
         self.colour = colour
-        self.styling
+        self.styling = styling
