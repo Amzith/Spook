@@ -14,7 +14,7 @@ def createHandout(form):
     #TODO: needs to generate two text objects,
     # one with the name field of the form one for the content - ideally it should also position the text correctly
     handout_text = Text('Tangerine-Regular.ttf', (20, 100), output_text, (0, 0, 0), None)
-    background_image = BackgroundImage('paper', (1080,1080), 'paper.jpg')
+    background_image = BackgroundImage('paper', (595, 842), 'paper.jpg')
     handout = Handout("output", background_image)
 
     handout.addText(handout_text)
