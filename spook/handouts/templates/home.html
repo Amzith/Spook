@@ -7,23 +7,21 @@
     <em>Feral Slinky Team</em>!
   </p>
   {% load static %}
-  <img
-  src="{% static 'images/woods.jpg' %}"
-  alt="Background Image" 
-  style="width:555px;height:540px;"/>
-
-  <h2>Contents</h2>
-  <p>The library has the following:</p>
-  <ul>
-    <li><strong>Text:</strong> {{ title }}</li>
-    <li><strong>Date:</strong> {{ date }}</li>
-  </ul>
+  <h2>Handout</h2>
+  <p>Provide the name and the text to go inside the handout:</p>
 
   <form action="" method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Submit">
   </form>
+  <h3>Generated Handout</h2>
+  <a href="{% static 'images/output.jpg' %}" download>download</a>
+  <p></p>
+  <img
+  src="{% static 'images/output.jpg' %}"
+  alt="Background Image"/>
+  
 
 
 {% endblock %}

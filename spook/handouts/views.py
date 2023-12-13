@@ -15,6 +15,7 @@ from matplotlib import font_manager
 
 # Create your views here.
 def formpage(request):
+
     # Handle Form 
     if request.method == "POST":
         form = HandoutForm(request.POST)
@@ -26,16 +27,15 @@ def formpage(request):
             drawservice = ImageDrawService()
             
             drawservice.draw(handout)
-
-            return render(request, 'output.html')
-    
+            
     else:
         form = HandoutForm()
 
+    
     context = {
         'title': 'Handouts',
         'date': 1920,
         "form": form
     }
-
+       
     return render(request, 'home.html', context=context)
